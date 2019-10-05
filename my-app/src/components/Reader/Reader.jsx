@@ -6,13 +6,9 @@ import Counter from './Counter/Counter';
 import styles from './Reader.module.css';
 
 class Reader extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      value: 0,
-    };
-  }
+  state = {
+    value: 0,
+  };
 
   handleDecrement = () => {
     this.setState(state => ({
