@@ -2,10 +2,6 @@ import React from 'react';
 import publications from '../../publications.json';
 import Reader from '../Reader/Reader';
 
-const App = () => (
-  <div>
-    <Reader items={publications} />
-  </div>
-);
+const App = () => <Reader items={publications} />;
 
 export default App;

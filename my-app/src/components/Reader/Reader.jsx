@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Publication from './Publication/Publication';
 import Controls from './Controls/Controls';
-import Counter from './Counter/Counter';
 import styles from './Reader.module.css';
 
 class Reader extends Component {
@@ -10,16 +9,17 @@ class Reader extends Component {
     value: 0,
   };
 
-  handleDecrement = () => {
-    this.setState(state => ({
-      value: state.value - 1,
-    }));
-  };
-
-  handleIncrement = () => {
-    this.setState(state => ({
-      value: state.value + 1,
-    }));
+  handleClick = ({ target }) => {
+    const { name } = target;
+    if (name === 'decrement') {
+      this.setState(state => ({
+        value: state.value - 1,
+      }));
+    } else if (name === 'increment') {
+      this.setState(state => ({
+        value: state.value + 1,
+      }));
+    }
   };
 
   render() {
@@ -33,12 +33,8 @@ class Reader extends Component {
           text={items[value].text}
           title={items[value].title}
         />
-        <Counter value={value} />
-        <Controls
-          handleDecrement={this.handleDecrement}
-          handleIncrement={this.handleIncrement}
-          value={value}
-        />
+        <p className={styles.counter}>{value + 1}/12</p>;
+        <Controls handleClick={this.handleClick} value={value} />
       </div>
     );
   }
